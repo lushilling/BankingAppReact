@@ -16,11 +16,11 @@ export default class Account extends React.Component {
         }
     }
 
-    getRequest = (e) => {
+    // getRequest = (e) => {
     
-    .axios.get("http://localhost:8080/account/getAccount")
+    // .axios.get("http://localhost:8080/account/getAccount")
 
-    }
+    // }
 
     render() {
         return (
