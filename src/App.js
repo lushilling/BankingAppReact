@@ -7,12 +7,13 @@ import Homepage from './Components/Homepage';
 import Account from './Components/Account';
 import Prize from './Components/prize'
 
-export default class App extends React.Component{
+export default class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      account: {}
     };
   }
 
@@ -25,6 +26,15 @@ export default class App extends React.Component{
       })
   }
 
+  addAccount = (newAccount) => {
+    axios.post("http://localhost:8080/account/addAccount", newAccount)
+      .then(response => {
+        this.setState({
+          account: response.data,
+        })
+      });
+  }
+
   componentDidMount() {
     this.onLoad();
   }
@@ -34,13 +44,13 @@ export default class App extends React.Component{
       <div >
         <Router>
 
-          <Route exact path="/" component={Homepage} />
+          <Route exact path="/"  render={() => <Homepage data={this.state.data} addAccount={this.addAccount} />} />
 
-          <Route path="/account" component={Account} render={() => <Account data={this.state.data} onLoad={this.state.onLoad} />} />
+          <Route path="/account" render={() => <Account data={this.state.data} onLoad={this.state.onLoad} firstName={this.state.account.firstName} accountNumber={this.state.account.accountNumber} />} />
 
-          <Route path="/prize" component={Prize} render={() => <Prize data={this.state.data} onLoad={this.state.onLoad} />} />
+          <Route path="/prize"  render={() => <Prize data={this.state.data} onLoad={this.state.onLoad} prize={this.state.account.prize} />} />
 
-        </Router>
+        </ Router>
       </div >
     )
   }

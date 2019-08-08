@@ -1,20 +1,9 @@
 import React from 'react';
 import '../App.css';
 
-export default class Prize extends React.Component {
+export default function Prize(props) {
 
-    constructor() {
-        super();
-        this.state = {
-            prize: ""
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <p>{this.state.prize}</p>
-            </div>
-        )
-    }
+    return (
+        <p></p>
+    )
 }

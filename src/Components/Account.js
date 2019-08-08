@@ -46,29 +46,15 @@ export default class Account extends React.Component {
                             })
                     }
                 }
-
-                //     if (accountNumber === accountWanted) {
-                //         console.log(i);
-
-                //         //get id
-
-                //         // axios.get("http://localhost:8080/account/getAccount/" + idWanted)
-                //         //     .then(response => {
-                //         //         this.setState({
-                //         //             data: response.data
-                //         //         })
-                //         //     })
-                //     }
-                // }
             })
-        // this.props.history.push('/prize');
+        this.props.history.push('/prize');
     }
 
 
     render() {
         return (
             <div>
-                <p>Welcome {this.state.firstName}, your account ({this.state.accountNumber}) has been successfully created.</p><br />
+                <p>Welcome {this.props.firstName}, your account ({this.props.accountNumber}) has been successfully created.</p><br />
                 <p>Enter your account number here to see if you have won a prize!</p>
                 <Form inline onSubmit={this.getRequest}>
                     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
