@@ -37,13 +37,11 @@ export default class Account extends React.Component {
                 for (let x of result) {
                     if (x.accountNumber === accountWanted.accountNumber) {
                         let accountId = x.id;
-                        console.log(accountId);
                         axios.get("http://localhost:8080/account/getAccount/" + accountId)
                             .then(response => {
                                 this.setState({
                                     data: response.data
                                 })
-                                console.log(response.data);
                             })
                     }
                 }
