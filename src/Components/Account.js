@@ -6,21 +6,27 @@ import {
     Input,
     Button
 } from 'reactstrap';
+import axios from 'axios';
 
 export default class Account extends React.Component {
 
     constructor() {
         super();
         this.state = {
+            firstName: "",
             accountNumber: ""
         }
     }
 
-    // getRequest = (e) => {
-    
-    // .axios.get("http://localhost:8080/account/getAccount")
-
-    // }
+    getRequest = (e) => {
+        e.preventDefault();
+        axios.get("http://localhost:8080/account/getAccount")
+            .then(response => {
+                this.setState({
+                    data: response.data
+                })
+            })
+    }
 
     render() {
         return (

@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import axios from 'axios';
 
+
 export default class Homepage extends React.Component {
 
     constructor() {
@@ -17,6 +18,10 @@ export default class Homepage extends React.Component {
             firstName: "",
             lastName: ""
         }
+    }
+
+    nextPage = () => {
+        this.props.history.push('/account')
     }
 
     postRequest = (e) => {
@@ -40,13 +45,16 @@ export default class Homepage extends React.Component {
                     data: response.data
                 });
             });
+        this.props.history.push('/account');
     }
 
     render() {
-
         return (
             <div>
-                <Form inline onSubmit={this.postRequest}>
+                <p>Banking Application</p><br />
+                <p>Enter your first and last name below to create an account</p>
+
+                <Form inline onSubmit={this.postRequest} >
                     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                         <Label for="firstName" className="mr-sm-2">First Name: </Label>
                         <Input type="text" name="firstName" id="firstName" placeholder="Enter First Name" />
@@ -56,7 +64,7 @@ export default class Homepage extends React.Component {
                         <Input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" />
                     </FormGroup>
                     <Button>Create Account</Button>
-                </Form>
+                </ Form>
                 <p style={{ color: 'red' }}>{this.state.error}</p>
                 {/* print account number */}
             </div>
