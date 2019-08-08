@@ -6,8 +6,6 @@ export default class Prize extends React.Component {
     constructor() {
         super();
         this.state = {
-            firstName: "",
-            accountNumber: "",
             prize: ""
         }
     }
