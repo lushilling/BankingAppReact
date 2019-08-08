@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import '../App.css';
 import {
     Form,
@@ -47,9 +48,10 @@ export default class Account extends React.Component {
                     }
                 }
             })
-        this.props.history.push('/prize');
-    }
 
+            document.getElementById("linkToAccount").click();
+    
+    }
 
     render() {
         return (
@@ -61,6 +63,7 @@ export default class Account extends React.Component {
                         <Input type="text" name="firstName" id="firstName" placeholder="Account Number" />
                     </FormGroup>
                     <Button>Reveal prize</Button>
+                    <Link to="/prize" id="linkToAccount"></Link>
                 </Form>
             </div>
         )
